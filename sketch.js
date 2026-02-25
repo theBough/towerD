@@ -11,4 +11,7 @@ function draw() {
   background(220);
   p.display();
   p2.display();
+  
+  p.update();
+  
 }
