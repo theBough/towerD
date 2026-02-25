@@ -12,5 +12,12 @@ function Player(x,y,w,h,col,img){
     rect(this.x, this.y, this.w, this.h);
     pop()
   }
+  this.update = function(){
+    //look for keypress on keyboard, to move player
+    if(keyIsDown(37)){
+      this.x -= 5;
+    }
+    
+  }
   
 }
