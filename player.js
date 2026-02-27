@@ -25,13 +25,13 @@ function Player(x,y,w,h,col,img){
        mouseY < this.y + this.h
       ){
       this.isBeingClicked = true;
-    }else{
-      this.isBeingClicked = false;      
-    }//end if
+    }else if( this.isBeingClicked && !mouseIsPressed){
+      this.isBeingClicked = false;
+    }
     
     if(this.isBeingClicked){
-      this.x = mouseX;
-      this.y = mouseY;
+      this.x = mouseX - (this.w / 2);
+      this.y = mouseY - (this.h /2);
     }//end if
     
   }//end function
