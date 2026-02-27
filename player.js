@@ -17,6 +17,9 @@ function Player(x,y,w,h,col,img){
     if(keyIsDown(37)){
       this.x -= 5;
     }
+    if(mouseIsPressed){
+      console.log("test")
+    }
     
   }
   
