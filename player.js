@@ -17,8 +17,13 @@ function Player(x,y,w,h,col,img){
     if(keyIsDown(37)){
       this.x -= 5;
     }
-    if(mouseIsPressed && mouseX > this.x && mouseX< this.x + this.w){
-      console.log("on the right")
+    if(mouseIsPressed &&
+       mouseX > this.x &&
+       mouseX< this.x + this.w &&
+      mouseY >this.y &&
+       mouseY < this.y + this.h
+      ){
+      console.log("Clicked the Rectangle")
     }
     
   }
