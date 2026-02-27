@@ -5,6 +5,7 @@ function Player(x,y,w,h,col,img){
   this.h = h;
   this.col = col;
   this.img = img;
+  this.isBeingClicked = false;
   
   this.display  = function(){
     push();
@@ -23,9 +24,16 @@ function Player(x,y,w,h,col,img){
       mouseY >this.y &&
        mouseY < this.y + this.h
       ){
-      console.log("Clicked the Rectangle")
-    }
+      this.isBeingClicked = true;
+    }else{
+      this.isBeingClicked = false;      
+    }//end if
     
-  }
+    if(this.isBeingClicked){
+      this.x = mouseX;
+      this.y = mouseY;
+    }//end if
+    
+  }//end function
   
 }
