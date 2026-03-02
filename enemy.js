@@ -11,6 +11,7 @@ function Enemy(x,y,w,h,img){
     push();
     //fill(this.col)
     //rect(this.x, this.y, this.w, this.h);
+    this.img.resize(this.w, this.h)
     image(this.img, this.x, this.y)
     pop()
   }
