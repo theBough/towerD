@@ -1,17 +1,16 @@
-let p, p2;
-
+let p = [];
 
 function setup() {
   createCanvas(400, 400);
-  p = new Player(200,200,20,20,"green")
-  p2 = new Player(200,250,20,20,"red")
+  for (let i = 0; i < 5; i++) {
+    p.push(new Player(200 + i * 20, 200, 20, 20, "green"));
+  }
 }
 
 function draw() {
   background(220);
-  p.display();
-  p2.display();
-  
-  p.update();
-  
+  for (let i = 0; i < 5; i++) {
+    p[i].display();
+    p[i].update();
+  }
 }
