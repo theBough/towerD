@@ -3,7 +3,7 @@ let e;
 let map;
 
 function setup() {
-  createCanvas(400, 400);
+  createCanvas(640, 480);
   for (let i = 0; i < 5; i++) {
     p.push(new Player(200 + i * 20, 200, 20, 20, "green"));
   }
@@ -13,7 +13,7 @@ function setup() {
 
 function draw() {
   background(220);
-  map.resize(400,200)
+  map.resize(640,400)
   image(map,0,0)
   for (let i = 0; i < 5; i++) {
     p[i].display();
