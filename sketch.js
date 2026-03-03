@@ -1,25 +1,24 @@
-function Enemy(x,y,w,h,img, xSpeed, ySpeed){
-  this.x = x;
-  this.y = y;
-  this.w = w;
-  this.h = h;
-  //this.col = col;
-  this.img = loadImage(img);
-  this.xSpeed = xSpeed;
-  this.ySpeed = ySpeed;
-  
-  this.display  = function(){
-    push();
-    //fill(this.col)
-    //rect(this.x, this.y, this.w, this.h);
-    this.img.resize(this.w, this.h)
-    image(this.img, this.x, this.y)
-    pop()
+let p = [];
+let e;
+let map;
+
+function setup() {
+  createCanvas(640, 480);
+  for (let i = 0; i < 5; i++) {
+    p.push(new Player(200 + i * 20, 200, 20, 20, "green"));
   }
-  this.move = function(){
-    this.x += xSpeed;
-    this.y += ySpeed;
+  e = new Enemy(20, 100, 50,50,"images/cardinal1.png",1,0)
+  map = loadImage("map.png")
+}
+
+function draw() {
+  background(220);
+  map.resize(640,400)
+  image(map,0,0)
+  for (let i = 0; i < 5; i++) {
+    p[i].display();
+    p[i].update();
   }
-  
-  
+  e.display()
+  e.move();
 }
