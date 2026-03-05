@@ -10,10 +10,10 @@ function LeftTurn(x,y,w,h){
   this.collision = function(enemy){
     let vertDist = enemy.y -this.y;
     let horiDist = enemy.x -this.x;
-    //console.log("vd: " + vertDist + "\n" + "hd: " + horiDist)
-    if(Math.abs(vertDist) < 5 && Math.abs(horiDist) < 5){
+   
+    if(Math.abs(vertDist) < 1 && Math.abs(horiDist) < 1){
       //turn left.
-      //console.log("hey there")
+      
       let tempX = enemy.xSpeed
       enemy.xSpeed = enemy.ySpeed;
        enemy.ySpeed = tempX * -1
