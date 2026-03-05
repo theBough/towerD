@@ -14,8 +14,9 @@ function LeftTurn(x,y,w,h){
     if(Math.abs(vertDist) < 5 && Math.abs(horiDist) < 5){
       //turn left.
       //console.log("hey there")
-      enemy.xSpeed = 0;
-       enemy.ySpeed = -1;
+      let tempX = enemy.xSpeed
+      enemy.xSpeed = enemy.ySpeed;
+       enemy.ySpeed = tempX * -1
     }
   }
 }
