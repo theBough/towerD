@@ -17,8 +17,8 @@ function Enemy(x,y,w,h,img, xSpeed, ySpeed){
     pop()
   }
   this.move = function(){
-    this.x += xSpeed;
-    this.y += ySpeed;
+    this.x += this.xSpeed;
+    this.y += this.ySpeed;
   }
   
   
