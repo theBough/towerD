@@ -13,7 +13,7 @@ function setup() {
   for (let i = 0; i < 5; i++) {
     p.push(new Player(20 + i * 22, 440, 20, 20, "green"));
   }
-
+  sendWave(4);
   map = loadImage("map.png");
   placeLeftTurns();
 }
@@ -29,6 +29,9 @@ function draw() {
   leftTurns();
 }
 //--------- Below are self created functions----------------------------
+function sendWave(howMany){
+  let stopWave = setInterval(createEnemy, 2000);
+}
 function enemyStuff() {
   for (let i = 0; i < e.length; i++) {
     e[i].display();
@@ -55,6 +58,9 @@ function placeLeftTurns() {
 function leftTurns() {
   for (let i = 0; i < lt.length; i++) {
     lt[i].display();
-    lt[i].collision(e);
+    for(let j =0 ; j < e.length ; j++){
+      lt[i].collision(e[j]);
+    }//end loop
+    
   }
 } //end  leftTurns
