@@ -1,4 +1,4 @@
-function Enemy(x,y,w,h,img, xSpeed, ySpeed){
+function Enemy(x,y,w,h,img, xSpeed, ySpeed,id){
   this.x = x;
   this.y = y;
   this.w = w;
@@ -7,6 +7,7 @@ function Enemy(x,y,w,h,img, xSpeed, ySpeed){
   this.img = loadImage(img);
   this.xSpeed = xSpeed;
   this.ySpeed = ySpeed;
+  this.id = id
   
   this.display  = function(){
     push();
@@ -19,6 +20,13 @@ function Enemy(x,y,w,h,img, xSpeed, ySpeed){
   this.move = function(){
     this.x += this.xSpeed;
     this.y += this.ySpeed;
+    //check if we left the canvas, if yes delete it
+    if(this.x > width || this.x <0 || this.y > height || this.y <0 ){
+      console.log(e)
+      e.shift();
+      console.log("*************************************GONE")
+      
+    }
   }
   
   
