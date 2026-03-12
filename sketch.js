@@ -5,6 +5,8 @@ let cardinalPics = [];
 let map;
 //holder for leftTurns
 let lt = [];
+let waveCount = 20;
+let stopWave;
 //--------------------------------------------
 
 //-------functions that need to be here because of p5js ------------------
@@ -16,6 +18,8 @@ function setup() {
   sendWave(4);
   map = loadImage("map.png");
   placeLeftTurns();
+  
+ 
 }
 function draw() {
   background(220);
@@ -30,7 +34,7 @@ function draw() {
 }
 //--------- Below are self created functions----------------------------
 function sendWave(howMany){
-  let stopWave = setInterval(createEnemy, 2000);
+   stopWave = setInterval(createEnemy, 2000);
 }
 function enemyStuff() {
   for (let i = 0; i < e.length; i++) {
@@ -40,7 +44,13 @@ function enemyStuff() {
 } //end EnemyStuff
 function createEnemy() {
   //create an enemy object , and push it onto the array
-  e.push(new Enemy(20, 170, 50, 50, "images/cardinal1.png", 1, 0));
+  e.push(new Enemy(20, 170, 50, 50, "images/cardinal1.png", 1, 0,e.length-1));
+  if(e.length >= waveCount){
+    //stop sending enemies, and kill the setInterval
+    clearInterval(stopWave)
+    return 0;//end the function
+  }
+  
 } //end createEnemy
 function loadAnimationPictures() {
   let totalPics = 4;
