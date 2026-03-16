@@ -28,7 +28,7 @@ function Enemy(x,y,w,h,img, xSpeed, ySpeed,id, turning){
      
       //let thisTemp = e.findIndex(this.id)
      e.splice(e.findIndex(a => a.id ===this.id),1)
-      console.log(e)
+     
 
     
     }
