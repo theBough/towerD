@@ -1,4 +1,4 @@
-function Enemy(x,y,w,h,img, xSpeed, ySpeed,id){
+function Enemy(x,y,w,h,img, xSpeed, ySpeed,id, turning){
   this.x = x;
   this.y = y;
   this.w = w;
@@ -8,6 +8,7 @@ function Enemy(x,y,w,h,img, xSpeed, ySpeed,id){
   this.xSpeed = xSpeed;
   this.ySpeed = ySpeed;
   this.id = id
+
   
   this.display  = function(){
     push();
@@ -18,14 +19,18 @@ function Enemy(x,y,w,h,img, xSpeed, ySpeed,id){
     pop()
   }
   this.move = function(){
+    //console.log(e.indexOf(e.id))
     this.x += this.xSpeed;
     this.y += this.ySpeed;
+    //console.log(this.id)
     //check if we left the canvas, if yes delete it
-    if(this.x > width || this.x <0 || this.y > height || this.y <0 ){
+    if(this.x > width || this.x <0 || this.y > height || this.y <0){ 
+     
+      //let thisTemp = e.findIndex(this.id)
+     e.splice(e.findIndex(a => a.id ===this.id),1)
       console.log(e)
-      e.shift();
-      console.log("*************************************GONE")
-      
+
+    
     }
   }
   
