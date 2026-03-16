@@ -1,11 +1,12 @@
 //--------- Global Variables------------------
-let p = [];
-let e = [];
-let cardinalPics = [];
+let p = [];//array to hold the turrets
+let e = []; //array to hold the enemies
+let cardinalPics = [];//havent used it yet.
+let b = [] //array to hold the bullets
 let map;
 //holder for leftTurns
 let lt = [];
-let waveCount = 20;
+let waveCount = 5;
 let stopWave;
 //--------------------------------------------
 
@@ -13,9 +14,9 @@ let stopWave;
 function setup() {
   createCanvas(640, 480);
   for (let i = 0; i < 5; i++) {
-    p.push(new Player(20 + i * 22, 440, 20, 20, "green"));
+    p.push(new Player(20 + i * 22, 440, 20, 20, "pink"));
   }
-  sendWave(4);
+  sendWave();
   map = loadImage("map.png");
   placeLeftTurns();
   
@@ -31,9 +32,23 @@ function draw() {
   }
   enemyStuff();
   leftTurns();
+  bulletStuff();
 }
+function keyPressed(){
+  if(key === 'f'){
+    //user pressed the f key on the keyboard
+    b.push(new Bullet(p[0].x , p[0].y, 5,5,3,0,0))
+  }
+}
+
 //--------- Below are self created functions----------------------------
-function sendWave(howMany){
+function bulletStuff(){
+  for(let i =0 ; i < b.length ; i++){
+    b[i].display();
+    b[i].move();
+  }
+}//end bulletStuff
+function sendWave(){
    stopWave = setInterval(createEnemy, 2000);
 }
 function enemyStuff() {
@@ -44,12 +59,13 @@ function enemyStuff() {
 } //end EnemyStuff
 function createEnemy() {
   //create an enemy object , and push it onto the array
-  e.push(new Enemy(20, 170, 50, 50, "images/cardinal1.png", 1, 0,e.length-1));
+    
+    e.push(new Enemy(20, 170, 50, 50, "images/cardinal1.png", 1, 0,e.length));
+   
   if(e.length >= waveCount){
-    //stop sending enemies, and kill the setInterval
     clearInterval(stopWave)
-    return 0;//end the function
   }
+  
   
 } //end createEnemy
 function loadAnimationPictures() {
