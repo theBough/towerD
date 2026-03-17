@@ -35,5 +35,13 @@ function Player(x,y,w,h,col,img){
     }//end if
     
   }//end function
+  this.shoot = function(enemy){
+    let hyp = Math.sqrt(((this.x -  enemy.x)*(this.x -  enemy.x))+((this.y -  enemy.y)*(this.y -  enemy.y)))
+    
+    if(hyp < 100){
+      console.log("shoot!!!!!!!!!!!!!!!!!!!!!")
+    }
+  }
+  
   
 }
