@@ -36,10 +36,12 @@ function Player(x,y,w,h,col,img){
     
   }//end function
   this.shoot = function(enemy){
-    let hyp = Math.sqrt(((this.x -  enemy.x)*(this.x -  enemy.x))+((this.y -  enemy.y)*(this.y -  enemy.y)))
+    let deltaY = enemy.y - this.y
+    let deltaX = enemy.x - this.x;
+    let hyp = Math.sqrt((deltaX * deltaX)+(deltaY*deltaY))
     
-    if(hyp < 100){
-      console.log("shoot!!!!!!!!!!!!!!!!!!!!!")
+    if(hyp < 300){
+      b.push(new Bullet(this.x , this.y, 5,5,deltaX/50,deltaY/50,0))
     }
   }
   
