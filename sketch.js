@@ -29,6 +29,10 @@ function draw() {
   for (let i = 0; i < 5; i++) {
     p[i].display();
     p[i].update();
+    for(let j =0 ; j< e.length ; j++){
+      p[i].shoot(e[j]);
+    }
+    
   }
   enemyStuff();
   leftTurns();
@@ -59,9 +63,7 @@ function enemyStuff() {
 } //end EnemyStuff
 function createEnemy() {
   //create an enemy object , and push it onto the array
-    
-    e.push(new Enemy(20, 170, 50, 50, "images/cardinal1.png", 1, 0,e.length));
-   
+  e.push(new Enemy(20, 170, 50, 50, "images/cardinal1.png", 1, 0,e.length));
   if(e.length >= waveCount){
     clearInterval(stopWave)
   }
