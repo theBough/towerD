@@ -1,4 +1,4 @@
-function Player(x,y,w,h,col,img){
+function Player(x, y, w, h, col, img) {
   this.x = x;
   this.y = y;
   this.w = w;
@@ -6,36 +6,34 @@ function Player(x,y,w,h,col,img){
   this.col = col;
   this.img = img;
   this.isBeingClicked = false;
-  
-  this.display  = function(){
+  this.readyToShoot = true; //use this to control the gap between shots.
+
+  this.display = function () {
     push();
-    fill(this.col)
+    fill(this.col);
     rect(this.x, this.y, this.w, this.h);
-    pop()
-  }
-  this.update = function(){
+    pop();
+  };
+  this.update = function () {
     //look for keypress on keyboard, to move player
-    if(keyIsDown(37)){
+    if (keyIsDown(37)) {
       this.x -= 5;
     }
-    if(mouseIsPressed &&
-       mouseX > this.x &&
-       mouseX< this.x + this.w &&
-      mouseY >this.y &&
-       mouseY < this.y + this.h
-      ){
+    if (
+      mouseIsPressed &&
+      mouseX > this.x &&
+      mouseX < this.x + this.w &&
+      mouseY > this.y &&
+      mouseY < this.y + this.h
+    ) {
       this.isBeingClicked = true;
-    }else if( this.isBeingClicked && !mouseIsPressed){
+    } else if (this.isBeingClicked && !mouseIsPressed) {
       this.isBeingClicked = false;
     }
-    
-    if(this.isBeingClicked){
-      this.x = mouseX - (this.w / 2);
-      this.y = mouseY - (this.h /2);
-    }//end if
-    
-  }//end function
- 
-  
-  
+
+    if (this.isBeingClicked) {
+      this.x = mouseX - this.w / 2;
+      this.y = mouseY - this.h / 2;
+    } //end if
+  }; //end function
 }
