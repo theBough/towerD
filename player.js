@@ -35,15 +35,7 @@ function Player(x,y,w,h,col,img){
     }//end if
     
   }//end function
-  this.shoot = function(enemy){
-    let deltaY = enemy.y - this.y
-    let deltaX = enemy.x - this.x;
-    let hyp = Math.sqrt((deltaX * deltaX)+(deltaY*deltaY))
-    
-    if(hyp < 300){
-      b.push(new Bullet(this.x , this.y, 5,5,deltaX/50,deltaY/50,0))
-    }
-  }
+ 
   
   
 }
