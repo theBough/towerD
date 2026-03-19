@@ -43,13 +43,18 @@ function keyPressed() {
 }
 
 //--------- Below are self created functions----------------------------
+function switchReadyToShoot(player){
+    player.readyToShoot = true;
+}
 function shoot(enemy, player) {
   let deltaY = enemy.y - player.y;
   let deltaX = enemy.x - player.x;
   let hyp = Math.sqrt(deltaX * deltaX + deltaY * deltaY);
 
-  if (hyp < 300) {
+  if (hyp < 300 && player.readyToShoot) {
+    player.readyToShoot = false;
     b.push(new Bullet(player.x, player.y, 5, 5, deltaX / 50, deltaY / 50, 0));
+    setTimeout(switchReadyToShoot , 5000, player);
   }
 }
 function bulletStuff() {
