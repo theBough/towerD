@@ -1,8 +1,8 @@
 //--------- Global Variables------------------
-let p = [];//array to hold the turrets
+let p = []; //array to hold the turrets
 let e = []; //array to hold the enemies
-let cardinalPics = [];//havent used it yet.
-let b = [] //array to hold the bullets
+let cardinalPics = []; //havent used it yet.
+let b = []; //array to hold the bullets
 let map;
 //holder for leftTurns
 let lt = [];
@@ -19,8 +19,6 @@ function setup() {
   sendWave();
   map = loadImage("map.png");
   placeLeftTurns();
-  
- 
 }
 function draw() {
   background(220);
@@ -29,31 +27,39 @@ function draw() {
   for (let i = 0; i < 5; i++) {
     p[i].display();
     p[i].update();
-    for(let j =0 ; j< e.length ; j++){
-      p[i].shoot(e[j]);
+    for (let j = 0; j < e.length; j++) {
+      shoot(e[j], p[i]);
     }
-    
   }
   enemyStuff();
   leftTurns();
   bulletStuff();
 }
-function keyPressed(){
-  if(key === 'f'){
+function keyPressed() {
+  if (key === "f") {
     //user pressed the f key on the keyboard
-    b.push(new Bullet(p[0].x , p[0].y, 5,5,3,0,0))
+    b.push(new Bullet(p[0].x, p[0].y, 5, 5, 3, 0, 0));
   }
 }
 
 //--------- Below are self created functions----------------------------
-function bulletStuff(){
-  for(let i =0 ; i < b.length ; i++){
+function shoot(enemy, player) {
+  let deltaY = enemy.y - player.y;
+  let deltaX = enemy.x - player.x;
+  let hyp = Math.sqrt(deltaX * deltaX + deltaY * deltaY);
+
+  if (hyp < 300) {
+    b.push(new Bullet(player.x, player.y, 5, 5, deltaX / 50, deltaY / 50, 0));
+  }
+}
+function bulletStuff() {
+  for (let i = 0; i < b.length; i++) {
     b[i].display();
     b[i].move();
   }
-}//end bulletStuff
-function sendWave(){
-   stopWave = setInterval(createEnemy, 2000);
+} //end bulletStuff
+function sendWave() {
+  stopWave = setInterval(createEnemy, 2000);
 }
 function enemyStuff() {
   for (let i = 0; i < e.length; i++) {
@@ -63,12 +69,10 @@ function enemyStuff() {
 } //end EnemyStuff
 function createEnemy() {
   //create an enemy object , and push it onto the array
-  e.push(new Enemy(20, 170, 50, 50, "images/cardinal1.png", 1, 0,e.length));
-  if(e.length >= waveCount){
-    clearInterval(stopWave)
+  e.push(new Enemy(20, 170, 50, 50, "images/cardinal1.png", 1, 0, e.length));
+  if (e.length >= waveCount) {
+    clearInterval(stopWave);
   }
-  
-  
 } //end createEnemy
 function loadAnimationPictures() {
   let totalPics = 4;
@@ -86,9 +90,8 @@ function placeLeftTurns() {
 function leftTurns() {
   for (let i = 0; i < lt.length; i++) {
     lt[i].display();
-    for(let j =0 ; j < e.length ; j++){
+    for (let j = 0; j < e.length; j++) {
       lt[i].collision(e[j]);
-    }//end loop
-    
+    } //end loop
   }
 } //end  leftTurns
