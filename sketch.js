@@ -70,6 +70,10 @@ function enemyStuff() {
   for (let i = 0; i < e.length; i++) {
     e[i].display();
     e[i].move();
+    //check for collision with the bullets
+    for(let j = 0; j< b.length; j++){
+      e[i].collisionWithEnemy(b[j])
+    }
   } //end for loop
 } //end EnemyStuff
 function createEnemy() {
