@@ -11,7 +11,7 @@ function Bullet(x,y,w,h, xSpeed, ySpeed,id){
 
   this.display  = function(){
     push();
-    //fill(this.col)
+    fill("red")
     rect(this.x, this.y, this.w, this.h);
     //this.img.resize(this.w, this.h)
     //image(this.img, this.x, this.y)
@@ -23,6 +23,10 @@ function Bullet(x,y,w,h, xSpeed, ySpeed,id){
     //check if we left the canvas, if yes delete it
     if(this.x > width || this.x <0 || this.y > height || this.y <0){ 
     
+    }
+    if(this.x > width || this.x <0 || this.y > height || this.y <0){ 
+      //let thisTemp = e.findIndex(this.id)
+     b.splice(b.findIndex(a => a.id ===this.id),1)
     }
   }
   
