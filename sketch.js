@@ -53,7 +53,7 @@ function shoot(enemy, player) {
 
   if (hyp < 300 && player.readyToShoot) {
     player.readyToShoot = false;
-    b.push(new Bullet(player.x, player.y, 5, 5, deltaX / 50, deltaY / 50, 0));
+    b.push(new Bullet(player.x, player.y, 5, 5, deltaX / 50, deltaY / 50, b.length));
     setTimeout(switchReadyToShoot , 5000, player);
   }
 }
@@ -72,7 +72,11 @@ function enemyStuff() {
     e[i].move();
     //check for collision with the bullets
     for(let j = 0; j< b.length; j++){
-      e[i].collisionWithEnemy(b[j])
+      if(e[i].collisionWithBullet(b[j])){
+        //remove the enemy , and the bullet
+        e.splice(e.findIndex(a => a.id ===e[i].id),1)
+        b.splice(b.findIndex(a => a.id ===b[j].id),1)
+      }
     }
   } //end for loop
 } //end EnemyStuff
