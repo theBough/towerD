@@ -9,13 +9,14 @@ function Enemy(x,y,w,h,img, xSpeed, ySpeed,id){
   this.ySpeed = ySpeed;
   this.id = id
 
-  this.collisionWithEnemy = function(thisBullet){
-    if(thisBullet.x > this.x &&
-      thisBullet.x + thisBullet.w < this.x + this.w &&
-      thisBullet.y> this.y &&
-      thisBullet.y + thisBullet.h < this.y + this.h){
-      console.log("hit")
+  this.collisionWithBullet = function(bullet){
+    if(bullet.x > this.x &&
+      bullet.x + bullet.w < this.x + this.w &&
+      bullet.y> this.y &&
+      bullet.y + bullet.h < this.y + this.h){
+      return true;
     }
+    return false;
   }
   this.display  = function(){
     push();
