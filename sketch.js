@@ -4,8 +4,8 @@ let e = []; //array to hold the enemies
 let cardinalPics = []; //havent used it yet.
 let b = []; //array to hold the bullets
 let map;
-//holder for leftTurns
-let lt = [];
+
+let lt = [];//holder for leftTurns
 let waveCount = 5;
 let stopWave;
 //--------------------------------------------
@@ -74,7 +74,11 @@ function enemyStuff() {
     for(let j = 0; j< b.length; j++){
       if(e[i].collisionWithBullet(b[j])){
         //remove the enemy , and the bullet
-        e.splice(e.findIndex(a => a.id ===e[i].id),1)
+        e[i].health -= 1;
+        if(e[i].health < 1){
+          e.splice(e.findIndex(a => a.id ===e[i].id),1)
+        }
+        
         b.splice(b.findIndex(a => a.id ===b[j].id),1)
       }
     }
