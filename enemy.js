@@ -8,6 +8,7 @@ function Enemy(x,y,w,h,img, xSpeed, ySpeed,id){
   this.xSpeed = xSpeed;
   this.ySpeed = ySpeed;
   this.id = id
+  this.health = 10;
 
   this.collisionWithBullet = function(bullet){
     if(bullet.x > this.x &&
